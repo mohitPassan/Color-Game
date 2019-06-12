@@ -20,3 +20,7 @@ h1 {
 	margin: 1.666%;
 	float: left;
 }
+
+#answerStatus {
+	color: white;
+}

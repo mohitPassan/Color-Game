@@ -4,10 +4,10 @@ var colors = [
 	"rgb(214, 244, 65)",
 	"rgb(214, 117, 14)",
 	"rgb(214, 13, 123)",
-	"rgb(145, 5, 5)",
+	"rgb(145, 5, 5)"
 ]
 
-var pickedColor = colors[3];
+var pickedColor = chooseColor();
 var squares = document.querySelectorAll(".square");
 
 for(var i=0; i<squares.length; i++) {
@@ -16,12 +16,27 @@ for(var i=0; i<squares.length; i++) {
 	squares[i].addEventListener("click", function() {
 		var clickedColor = this.style.backgroundColor;
 		if(clickedColor === pickedColor) {
-			alert("correct");
+			changeColors();
+			ansStatus.textContent = "Correct!"
 		} else {
-			alert("wrong");
+			this.style.backgroundColor = "#232323";
+			ansStatus.textContent = "Try Again!";
 		}
 	});
 }
 
 var rgbDisplay = document.querySelector("#rgbDisplay");
 rgbDisplay.textContent = pickedColor.toUpperCase();
+
+function changeColors() {
+	for(var i=0; i<squares.length; i++) {
+		squares[i].style.backgroundColor = pickedColor;
+	}
+}
+
+function chooseColor() {
+	var colorIndex = Math.floor(Math.random() * 6);
+	return colors[colorIndex];
+}
+
+var ansStatus = document.querySelector("#answerStatus");
