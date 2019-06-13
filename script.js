@@ -1,12 +1,5 @@
-var colors = [
-	"rgb(66, 134, 244)",
-	"rgb(68, 244, 65)",
-	"rgb(214, 244, 65)",
-	"rgb(214, 117, 14)",
-	"rgb(214, 13, 123)",
-	"rgb(145, 5, 5)"
-]
-
+var colors = generateRandomColors(6);
+var h1 = document.querySelector("h1");
 var pickedColor = chooseColor();
 var squares = document.querySelectorAll(".square");
 
@@ -18,6 +11,7 @@ for(var i=0; i<squares.length; i++) {
 		if(clickedColor === pickedColor) {
 			changeColors();
 			ansStatus.textContent = "Correct!"
+			h1.style.backgroundColor = pickedColor;
 		} else {
 			this.style.backgroundColor = "#232323";
 			ansStatus.textContent = "Try Again!";
@@ -40,3 +34,18 @@ function chooseColor() {
 }
 
 var ansStatus = document.querySelector("#answerStatus");
+
+function generateRandomColors(numOfColors) {
+	var arr = [];
+	for(var i=0; i<numOfColors; i++) {
+		arr.push(getColor());
+	}
+	return arr;
+}
+
+function getColor() {
+	var r = Math.floor(Math.random() * 256);
+	var g = Math.floor(Math.random() * 256);
+	var b = Math.floor(Math.random() * 256);
+	return "rgb(" + r + ", " + g + ", " + b + ")";
+}
