@@ -21,6 +21,9 @@ h1 {
 	float: left;
 }
 
-#answerStatus {
-	color: white;
+#stripe {
+	background: rgb(255, 255, 255);
+	height: 30px;
+	text-align: center;
+	color: black;
 }
