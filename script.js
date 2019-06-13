@@ -1,12 +1,51 @@
-var colors = generateRandomColors(6);
+var noOfSquares = 6;
+var colors = generateRandomColors(noOfSquares);
 var h1 = document.querySelector("h1");
 var pickedColor = chooseColor();
 var squares = document.querySelectorAll(".square");
 var resetButton = document.querySelector("#resetButton");
 var rgbDisplay = document.querySelector("#rgbDisplay");
+var easyButton = document.querySelector("#easyB");
+var hardButton = document.querySelector("#hardB");
+var ansStatus = document.querySelector("#answerStatus");
+
+easyButton.addEventListener("click", function() {
+	noOfSquares = 3;
+	colors = generateRandomColors(noOfSquares);
+	pickedColor = chooseColor();
+	rgbDisplay.textContent = pickedColor;
+	for(var i=0; i<squares.length; i++) {
+		if(colors[i]) {
+			squares[i].style.backgroundColor = colors[i];
+		} else {
+			squares[i].style.display = "none";
+		}
+	}
+	this.classList.add("selected");
+	hardButton.classList.remove("selected");
+	h1.style.backgroundColor = "#232323";
+	resetButton.textContent = "New Colors";
+	ansStatus.textContent = "";
+});
+
+hardButton.addEventListener("click", function() {
+	noOfSquares = 6;
+	colors = generateRandomColors(noOfSquares);
+	pickedColor = chooseColor();
+	rgbDisplay.textContent = pickedColor;
+	for(var i=0; i<squares.length; i++) {
+		squares[i].style.backgroundColor = colors[i];
+		squares[i].style.display = "block";
+	}
+	this.classList.add("selected");
+	easyButton.classList.remove("selected");
+	h1.style.backgroundColor = "#232323";
+	resetButton.textContent = "New Colors";
+	ansStatus.textContent = "";
+});
 
 resetButton.addEventListener("click", function() {
-	colors = generateRandomColors(6);
+	colors = generateRandomColors(noOfSquares);
 	for(var i=0; i<squares.length; i++) {
 		squares[i].style.backgroundColor = colors[i];
 	}
@@ -43,11 +82,9 @@ function changeColors() {
 }
 
 function chooseColor() {
-	var colorIndex = Math.floor(Math.random() * 6);
+	var colorIndex = Math.floor(Math.random() * noOfSquares);
 	return colors[colorIndex];
 }
-
-var ansStatus = document.querySelector("#answerStatus");
 
 function generateRandomColors(numOfColors) {
 	var arr = [];
