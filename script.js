@@ -23,7 +23,7 @@ easyButton.addEventListener("click", function() {
 	}
 	this.classList.add("selected");
 	hardButton.classList.remove("selected");
-	h1.style.backgroundColor = "#232323";
+	h1.style.backgroundColor = "steelblue";
 	resetButton.textContent = "New Colors";
 	ansStatus.textContent = "";
 });
@@ -39,7 +39,7 @@ hardButton.addEventListener("click", function() {
 	}
 	this.classList.add("selected");
 	easyButton.classList.remove("selected");
-	h1.style.backgroundColor = "#232323";
+	h1.style.backgroundColor = "steelblue";
 	resetButton.textContent = "New Colors";
 	ansStatus.textContent = "";
 });
@@ -51,7 +51,7 @@ resetButton.addEventListener("click", function() {
 	}
 	pickedColor = chooseColor();
 	rgbDisplay.textContent = pickedColor;
-	h1.style.backgroundColor = "#232323";
+	h1.style.backgroundColor = "steelblue";
 	resetButton.textContent = "New Colors";
 	ansStatus.textContent = "";
 });
